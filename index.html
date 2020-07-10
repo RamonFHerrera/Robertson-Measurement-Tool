@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name='author' content='Kyle Wetton for Codrops' />
+    <meta name='keywords' content='three.js, color custromizer, app'>
+    <link rel="stylesheet" href="./css/style.css" type='text/css'>
+    <title>Haags Measurement Tool</title>
+</head>
+
+<body>
+    <div class="view">
+        <div class="canvas" id="canvas"></div>
+    </div>
+    <div class="setting">
+        <div class="setting">
+            <div class="set-part">
+               <div class="set-item">
+                  <div class="set-label">Distance 1 </div>
+                  <div class="set-value" id="distance1"></div>
+               </div>
+               <div class="set-item">
+                  <div class="set-label">Distance 2</div>
+                  <div class="set-value" id="distance2"></div>
+               </div>
+            </div>
+            <div class="set-part">
+               <div class="set-item">
+                  <div class="set-label">Angle 1</div>
+                  <div class="set-value" id="angle1"></div>
+               </div>
+               <div class="set-item">
+                  <div class="set-label">Angle 2</div>
+                  <div class="set-value" id="angle2"></div>
+               </div>
+            </div>
+         </div>
+    </div>
+
+    <script src="./pluginJS/jquery.js"></script>
+    <script src="./pluginJS/three.min.js"></script>
+    <!-- <script src="./pluginJS/three.module.js"></script> -->
+    <script src="./pluginJS/SVGLoader.js"></script>
+
+    <script src="./pluginJS/OrbitControls.js"></script>
+
+    <script src="./customJS/custom.js"></script>
+    <script src="./customJS/objectManage.js"></script>
+    <script src="./customJS/semiCircleManage1.js"></script>
+    <script src="./customJS/semiCircleManage2.js"></script>
+
+
+    <script src="./customJS/script.js"></script>
+</body>
+
+</html>
