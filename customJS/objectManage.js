@@ -1,6 +1,6 @@
 function getBallMesh() {
-    var ballGeo = new THREE.SphereGeometry(2.5, 32, 32);
-    var ballMat = new THREE.MeshLambertMaterial({ color: colorSetting.ballColor, transparent: true, opacity: 1 });
+    var ballGeo = new THREE.SphereGeometry(6, 32, 32);
+    var ballMat = new THREE.MeshLambertMaterial({ color: colorSetting.ballColor, transparent: true, opacity: 0.1 });
     var Ball = new THREE.Mesh(ballGeo, ballMat);
     return Ball;
 }
@@ -10,8 +10,8 @@ function getLineMesh(pos0, pos1, color, opa) {
     points.push(new THREE.Vector3(pos0.x, pos0.y, 0));
     points.push(new THREE.Vector3(pos1.x, pos1.y, 0));
     var lineGeo = new THREE.Geometry().setFromPoints(points);
-    var lineMat = new THREE.LineBasicMaterial({ color: color });
-    if (opa) { lineMat.transparent = true; lineMat.opacity = opa; }
+    var lineMat = new THREE.LineBasicMaterial({ color: color, linewidth: 10 });
+    if (opa) { lineMat.transparent = true; lineMat.opacity = opa;}
     else { lineMat.depthTest = false; lineMat.transparent = true; }
     var Line = new THREE.Line(lineGeo, lineMat);
     return Line;
@@ -31,8 +31,9 @@ function createBall(pos0, pos1, ballGroup, lineGroup) {
     lineGroup.add(lineMesh);
     // addDistanceLabel(pos0, pos1, distanceLabel1, distance1);
 
-    scene.add(ballGroup);
+    
     scene.add(lineGroup);
+    scene.add(ballGroup);
 }
 
 function horizontalLine() {

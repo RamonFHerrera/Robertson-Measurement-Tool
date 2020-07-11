@@ -135,7 +135,6 @@ function onMouseDown() {
     }
 
     if (interBall1) {
-        console.log("ball1-1")
         dataSetting.mouseStatus = "ball1";
         setBallNum1 = interBall1.object.ballNum;
         ballShift0.subVectors(ballGroup1.children[0].position, interPlane.point);
@@ -143,7 +142,6 @@ function onMouseDown() {
     }
 
     if (interBall2) {
-        console.log("ball2-1")
         dataSetting.mouseStatus = "ball2";
         setBallNum2 = interBall2.object.ballNum;
         ballShift2.subVectors(ballGroup2.children[0].position, interPlane.point);
@@ -192,7 +190,6 @@ function onMouseDown() {
 }
 
 function onMouseUp() {
-    
     dataSetting.downPosition = null;
     dataSetting.mouseStatus = "none";
     setBallNum1 = -1; setBallNum2 = -1;
@@ -290,8 +287,7 @@ function onMouseMove() {
         if (interPlane) {
             
             if (dataSetting.downPosition) {
-                
-                createBall(dataSetting.downPosition, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup1, lineGroup1);
+                createBall(dataSetting.downPosition, { x: interPlane.point.x, y: interPlane.point.y}, ballGroup1, lineGroup1);
                 dataSetting.downPosition = null;
             } else {
                 setBallPos(1, interPlane.point, ballGroup1, lineGroup1);
@@ -327,9 +323,7 @@ function onMouseMove() {
     if (dataSetting.mouseStatus === "ball1") { //select ball
         if (interPlane) {
             if (setBallNum1 === 1) {
-                // moveVector(point0, point1, interPlane, ballShift0, ballShift1, lineGroup1);
-                moveVector(point1, point0, interPlane, ballShift0, ballShift1, lineGroup1);
-                setAudio();
+                setBallPos(setBallNum1, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup1, lineGroup1);
             } else {
                 setBallPos(setBallNum1, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup1, lineGroup1);
             }
@@ -337,20 +331,27 @@ function onMouseMove() {
             addDistanceLabel(point0, point1, distanceLabel1, "#distance1");
         }
     } else { // select Ball
-        if (interBall1) setBallOver(interBall1.object.ballNum, ballGroup1); else setBallOver(-1, ballGroup1);
+        if (interBall1) {
+            setBallOver(interBall1.object.ballNum, ballGroup1); 
+        }else {
+            setBallOver(-1, ballGroup1);
+        }
     }
 
     if (dataSetting.mouseStatus === "line1") {
-        
         if (interPlane) {
-            moveVector(point0, point1, interPlane, ballShift0, ballShift1, lineGroup1)
-            addDistanceLabel(point0, point1, distanceLabel1, "#distance1");
-            drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+            if (setBallNum1 === 1 || setBallNum1 === 0) {
+                setBallPos(setBallNum1, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup1, lineGroup1);
+            }else{
+                moveVector(point0, point1, interPlane, ballShift0, ballShift1, lineGroup1)
+                addDistanceLabel(point0, point1, distanceLabel1, "#distance1");
+                drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+            }
+            
         }
     }
 
     if (dataSetting.mouseStatus === "angle1") { // moving semiCircle
-        
         movedSemi = interPlane.point;
 
         var dx1 = movedSemi.x - currentSemi1.x;
@@ -363,9 +364,7 @@ function onMouseMove() {
     if (dataSetting.mouseStatus === "ball2") { //select ball
         if (interPlane) {
             if (setBallNum2 === 1) {
-                // moveVector(point2, point3, interPlane, ballShift2, ballShift3, lineGroup2)
-                moveVector(point3, point2, interPlane, ballShift2, ballShift3, lineGroup2)
-                setAudio();
+                setBallPos(setBallNum2, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup2, lineGroup2);
             } else {
                 setBallPos(setBallNum2, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup2, lineGroup2);
             }
@@ -378,9 +377,13 @@ function onMouseMove() {
 
     if (dataSetting.mouseStatus === "line2") {
         if (interPlane) {
-            moveVector(point2, point3, interPlane, ballShift2, ballShift3, lineGroup2)
-            addDistanceLabel(point2, point3, distanceLabel2, "#distance2")
-            drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+            if (setBallNum2 === 1 || setBallNum2 === 0) {
+                setBallPos(setBallNum2, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup2, lineGroup2);
+            }else{
+                moveVector(point2, point3, interPlane, ballShift2, ballShift3, lineGroup2)
+                addDistanceLabel(point2, point3, distanceLabel2, "#distance2")
+                drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+            }
         }
     }
 

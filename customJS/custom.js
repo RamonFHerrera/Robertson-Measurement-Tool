@@ -75,6 +75,7 @@ function addSVGLoad() {
 }
 
 function getMouseObject(event, mouse, raycaster, camera, arr) {
+    
     mouse.x = ((event.clientX - offsetX) / styleSetting.imageWidth) * 2 - 1;
     mouse.y = -((event.clientY - offsetY) / styleSetting.imageHeight) * 2 + 1;
     raycaster.setFromCamera(mouse, camera);
@@ -117,8 +118,6 @@ function setAudio() {
 }
 
 function EllipseArc(center, vertex1, vertex2, maxBoxSize, depth) {
-
-    // console.log("EllipseArc");
 
     // Get distances to center
     let centerDistanceVertex1 = vertex1.distanceTo(center);
