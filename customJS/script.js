@@ -236,6 +236,9 @@ function onMouseUp() {
             point3.y = point3.y + Math.abs(-60 - point2.y);
         }else{
             point3.y = point3.y - Math.abs(-60 - point2.y);
+            if(point3.y <= 0) {
+                point3.y = -60;
+            }
         }
         point2.y = -60;
     }
@@ -245,6 +248,9 @@ function onMouseUp() {
             point2.y = point2.y + Math.abs(-60 - point3.y);
         }else{
             point2.y = point2.y - Math.abs(-60 - point3.y);
+            if(point2.y <= 0) {
+                point2.y = -60;
+            }
         }
         point3.y = -60;
     }
