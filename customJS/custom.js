@@ -241,8 +241,8 @@ function addDistanceLabel(point0, point1, group, id) {
                 location = new THREE.Vector3((point1.x + point0.x) / 2 - 50, (point0.y + point1.y) / 2, 0.1)
                 : location = new THREE.Vector3((point1.x + point0.x) / 2, (point0.y + point1.y) / 2, 0.1)
         }
-        setLabel(distance + "(ft)", location, font, group);
-        jQuery(id).html(":" + "" + distance + "(ft)");
+        setLabel(distance + "ft", location, font, group);
+        jQuery(id).html(":" + " " + distance + "ft.");
     });
 }
 

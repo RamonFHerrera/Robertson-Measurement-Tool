@@ -1,6 +1,6 @@
 function getBallMesh() {
-    var ballGeo = new THREE.SphereGeometry(6, 32, 32);
-    var ballMat = new THREE.MeshLambertMaterial({ color: colorSetting.ballColor, transparent: true, opacity: 0.1 });
+    var ballGeo = new THREE.SphereGeometry(5, 32, 32);
+    var ballMat = new THREE.MeshLambertMaterial({ color: colorSetting.ballColor, transparent: true, opacity: 1 });
     var Ball = new THREE.Mesh(ballGeo, ballMat);
     return Ball;
 }

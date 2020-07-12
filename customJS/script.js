@@ -42,7 +42,7 @@ const dataSetting = {
     "svgURL": "../svgs/tiger.svg"
 }
 const colorSetting = {
-    "ballColor": 0xffffff,
+    "ballColor": 0xFFFF00,
     "ballOverColor": 0xffff00,
     "lineColor": 0xfefefe,
     "lineOverColor": 0xFFFF00,
