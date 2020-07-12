@@ -26,8 +26,8 @@ function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
             firstSemiCircle1 = true;
 
             p0.x > p1.x ?
-                semiCirclePoint1 = new THREE.Vector3(p1.x + 40, p1.y + 40, p1.z)
-                : semiCirclePoint1 = new THREE.Vector3(p1.x - 40, p1.y + 40, p1.z);
+                semiCirclePoint1 = new THREE.Vector3(p1.x + 30, p1.y + 30, p1.z)
+                : semiCirclePoint1 = new THREE.Vector3(p1.x - 30, p1.y + 30, p1.z);
 
             setSemiCircle(p1, p0, semiCirclePoint1, semiCircleGroup, labelGroup, angle);
 

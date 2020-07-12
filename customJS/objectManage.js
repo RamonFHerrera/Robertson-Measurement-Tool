@@ -1,5 +1,5 @@
 function getBallMesh() {
-    var ballGeo = new THREE.SphereGeometry(5, 32, 32);
+    var ballGeo = new THREE.SphereGeometry(3, 32, 32);
     var ballMat = new THREE.MeshLambertMaterial({ color: colorSetting.ballColor, transparent: true, opacity: 1 });
     var Ball = new THREE.Mesh(ballGeo, ballMat);
     return Ball;
@@ -40,6 +40,12 @@ function horizontalLine() {
     var groundLineMesh = getLineMesh(new THREE.Vector3(-300, dataSetting.axisY, 0.1),
         new THREE.Vector3(300, dataSetting.axisY, 0.1),
         colorSetting.centerLineColor);
+    groundlineGroup.add(groundLineMesh);
+    scene.add(groundlineGroup)
+
+    var groundLineMesh = getLineMesh(new THREE.Vector3(-300, dataSetting.axisY1, 1),
+        new THREE.Vector3(300, dataSetting.axisY1, 0.1),
+        colorSetting.centerLineColor1);
     groundlineGroup.add(groundLineMesh);
     scene.add(groundlineGroup)
 }

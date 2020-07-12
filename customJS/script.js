@@ -37,17 +37,19 @@ const dataSetting = {
     "angleShowStatus2": false,
     "downPosition": null,
     "axisY": -60,
+    "axisY1": 0,
     "reduction": 1,
     "fontSize": 10,
     "svgURL": "../svgs/tiger.svg"
 }
 const colorSetting = {
-    "ballColor": 0xFFFF00,
-    "ballOverColor": 0xffff00,
+    "ballColor": 0xfafc00,
+    "ballOverColor": 0xfafc00,
     "lineColor": 0xfefefe,
     "lineOverColor": 0xFFFF00,
     "semiCircleColor": 0xFFFF00,
-    "semiCircleOverColor": 0xfefefe
+    "semiCircleOverColor": 0xfefefe,
+    "centerLineColor1": 0xde2316
 }
 
 var offsetX = (window.innerWidth - styleSetting.imageWidth) * 0.5;
