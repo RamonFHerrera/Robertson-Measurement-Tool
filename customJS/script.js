@@ -297,7 +297,13 @@ function onMouseMove() {
                 point1 = ballGroup1.children[1].position;
 
                 addDistanceLabel(point0, point1, distanceLabel1, "#distance1");
-                drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                // drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                if(point0.y == -60) {
+                    drawSemiCircle1(point1, point0, semiCircleGroup1, angleLabel1, '#angle1');
+                }
+                if(point1.y == -60){
+                    drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                }
                 dataSetting.lineShowStatus1 = true;
             }
         }
@@ -316,7 +322,13 @@ function onMouseMove() {
 
                 addDistanceLabel(point2, point3, distanceLabel2, "#distance2")
 
-                drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+                if(point2.y == -60) {
+                    drawSemiCircle2(point3, point2, semiCircleGroup2, angleLabel2, '#angle2');
+                }
+    
+                if(point3.y == -60) {
+                    drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+                }
                 dataSetting.lineShowStatus2 = true;
             }
         }
@@ -329,7 +341,12 @@ function onMouseMove() {
             } else {
                 setBallPos(setBallNum1, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup1, lineGroup1);
             }
-            drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+            if(point0.y == -60) {
+                drawSemiCircle1(point1, point0, semiCircleGroup1, angleLabel1, '#angle1');
+            }
+            if(point1.y == -60){
+                drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+            }
             addDistanceLabel(point0, point1, distanceLabel1, "#distance1");
         }
     } else { // select Ball
@@ -344,10 +361,22 @@ function onMouseMove() {
         if (interPlane) {
             if (setBallNum1 === 1 || setBallNum1 === 0) {
                 setBallPos(setBallNum1, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup1, lineGroup1);
+                if(point0.y == -60) {
+                    drawSemiCircle1(point1, point0, semiCircleGroup1, angleLabel1, '#angle1');
+                }
+                if(point1.y == -60){
+                    drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                }
             }else{
                 moveVector(point0, point1, interPlane, ballShift0, ballShift1, lineGroup1)
                 addDistanceLabel(point0, point1, distanceLabel1, "#distance1");
-                drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                // drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                if(point0.y == -60) {
+                    drawSemiCircle1(point1, point0, semiCircleGroup1, angleLabel1, '#angle1');
+                }
+                if(point1.y == -60){
+                    drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
+                }
             }
             
         }
@@ -355,12 +384,19 @@ function onMouseMove() {
 
     if (dataSetting.mouseStatus === "angle1") { // moving semiCircle
         movedSemi = interPlane.point;
-
+        
         var dx1 = movedSemi.x - currentSemi1.x;
         var dy1 = movedSemi.y - currentSemi1.y;
 
         firstSemiCircle1 = false;
-        setMoveSemiCircle1(point1, point0, semiCirclePoint1, dx1, dy1, semiCircleGroup1, angleLabel1);
+        if(point1.y == -60) {
+            setMoveSemiCircle1(point1, point0, semiCirclePoint1, dx1, dy1, semiCircleGroup1, angleLabel1);
+        }
+
+        if(point0.y == -60) {
+            setMoveSemiCircle1(point0, point1, semiCirclePoint1, dx1, dy1, semiCircleGroup1, angleLabel1);
+        }
+        
     }
 
     if (dataSetting.mouseStatus === "ball2") { //select ball
@@ -370,7 +406,14 @@ function onMouseMove() {
             } else {
                 setBallPos(setBallNum2, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup2, lineGroup2);
             }
-            drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+            // drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+            if(point2.y == -60) {
+                drawSemiCircle2(point3, point2, semiCircleGroup2, angleLabel2, '#angle2');
+            }
+
+            if(point3.y == -60) {
+                drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+            }
             addDistanceLabel(point2, point3, distanceLabel2, "#distance2")
         }
     } else { // select Ball
@@ -381,14 +424,28 @@ function onMouseMove() {
         if (interPlane) {
             if (setBallNum2 === 1 || setBallNum2 === 0) {
                 setBallPos(setBallNum2, { x: interPlane.point.x, y: interPlane.point.y }, ballGroup2, lineGroup2);
+                if(point2.y == -60) {
+                    drawSemiCircle2(point3, point2, semiCircleGroup2, angleLabel2, '#angle2');
+                }
+    
+                if(point3.y == -60) {
+                    drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+                }
             }else{
                 moveVector(point2, point3, interPlane, ballShift2, ballShift3, lineGroup2)
                 addDistanceLabel(point2, point3, distanceLabel2, "#distance2")
-                drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+                // drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+                if(point2.y == -60) {
+                    drawSemiCircle2(point3, point2, semiCircleGroup2, angleLabel2, '#angle2');
+                }
+    
+                if(point3.y == -60) {
+                    drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
+                }
             }
         }
     }
-
+    
     if (dataSetting.mouseStatus === "angle2") { // moving semiCircle
         movedSemi = interPlane.point;
 
@@ -396,7 +453,14 @@ function onMouseMove() {
         var dy2 = movedSemi.y - currentSemi2.y;
 
         firstSemiCircle2 = false;
-        setMoveSemiCircle2(point3, point2, semiCirclePoint2, dx2, dy2, semiCircleGroup2, angleLabel2);
+        if(point3.y == -60) {
+            setMoveSemiCircle2(point3, point2, semiCirclePoint2, dx2, dy2, semiCircleGroup2, angleLabel2);
+        }
+
+        if(point2.y == -60) {
+            setMoveSemiCircle2(point2, point3, semiCirclePoint2, dx2, dy2, semiCircleGroup2, angleLabel2);
+        }
+
     }
 }
 
