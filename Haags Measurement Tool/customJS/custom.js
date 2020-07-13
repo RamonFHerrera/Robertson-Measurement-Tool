@@ -205,7 +205,12 @@ function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center 
         var location;
         p0.x < p1.x ? location = new THREE.Vector3(v2.x, (v1.y + dataSetting.axisY - dataSetting.fontSize / 2) / 2, 0.1)
             : location = new THREE.Vector3(v2.x - 30, (v1.y + dataSetting.axisY - dataSetting.fontSize / 2) / 2, 0.1)
-        setLabel(angle + "°", location, font, labelGroup);
+        if(angle == ' ') {
+            setLabel(angle, location, font, labelGroup);
+        }else{
+            setLabel(angle + "°", location, font, labelGroup);
+        }
+        
     });
 }
 

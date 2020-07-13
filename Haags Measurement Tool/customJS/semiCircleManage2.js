@@ -12,6 +12,9 @@ function setMoveSemiCircle2(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
     }
     removeLable(labelGroup);
     removeSemiCircle(semiCircleGroup);
+    if(angle == 0.00) {
+        angle = ' ';
+    }
     setSemiCircle(p0, p1, movedSemiPoint2, semiCircleGroup, labelGroup, angle);
 }
 
@@ -27,12 +30,21 @@ function drawSemiCircle2(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
             p0.x > p1.x ?
                 semiCirclePoint2 = new THREE.Vector3(p1.x + 30, p1.y + 30, p1.z)
                 : semiCirclePoint2 = new THREE.Vector3(p1.x - 30, p1.y + 30, p1.z);
-
+                
+            if(angle == 0.00) {
+                angle = ' ';
+            }
             setSemiCircle(p1, p0, semiCirclePoint2, semiCircleGroup, labelGroup, angle);
 
             angleShowState = null;
             dataSetting.angleShowStatus2 = true;
         }
-    jQuery(id).html(":" + " " + angle + "°");
+
+        if(angle == ' '){
+            jQuery(id).html(":" + " " + "0.00" + "°");
+        }else{
+            jQuery(id).html(":" + " " + angle + "°");
+        }
+    
 
 }
