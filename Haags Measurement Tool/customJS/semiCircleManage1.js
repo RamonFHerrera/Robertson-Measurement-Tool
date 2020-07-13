@@ -1,6 +1,5 @@
 function setMoveSemiCircle1(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { // p0: first endPoint, p1: second endPoint, s: semiCircle point
     var angle = getAngle(p0, p1);
-
     movedSemiPoint1 = new THREE.Vector3(ss.x + dx, ss.y + dy, ss.z);
     if (p1.x > p0.x) {
         if (movedSemiPoint1.x < p0.x) {
@@ -17,7 +16,7 @@ function setMoveSemiCircle1(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
     if(angle == 0.00) {
         angle = ' ';
     }
-    
+    // ***
     dataSetting.movedAngle1 = movedSemiPoint1;
     
     setSemiCircle(p0, p1, movedSemiPoint1, semiCircleGroup, labelGroup, angle);
@@ -37,12 +36,14 @@ function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
                     : semiCirclePoint1 = new THREE.Vector3(p1.x - 30, p1.y + 30, p1.z);
             }else{
                 semiCirclePoint1 = dataSetting.movedAngle1;
-                
             }
 
             if(angle == 0.00) {
                 angle = ' ';
             }
+            
+            console.log("value:", semiCircleGroup);
+
             setSemiCircle(p1, p0, semiCirclePoint1, semiCircleGroup, labelGroup, angle);
 
             angleShowState1 = null;
