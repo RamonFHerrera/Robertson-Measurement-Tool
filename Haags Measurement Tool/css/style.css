@@ -40,14 +40,13 @@ body {
 
 .setting {
    position: absolute;
-   bottom: 55px;
-   width: 900px;
-   left: calc(50% - 450px);
+   bottom: -240px;
+   /* width: 900px; */
+   /* left: calc(50% - 385px); */
    font-size: 22px;
 }
 .setting .set-part{
-   float: left;
-   width: 450px;
+   width: 35%;
 }
 .setting .set-part .set-item{
    width: 100%;
@@ -62,6 +61,23 @@ body {
    width: 400px;
    height: 100%;
    /* float: left; */
+}
+.infos {
+   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+}
+.paragraph {
+   text-align: center;
+   color: black;
+   /* margin-right: 90px; */
+}
+
+.paragraph a {
+   color: black;
 }
 
 

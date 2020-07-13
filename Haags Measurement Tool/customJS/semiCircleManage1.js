@@ -42,7 +42,7 @@ function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
         removeSemiCircle(semiCircleGroup);
     }
 
-    jQuery(id).html(":" + " " + angle + "°");
+    jQuery(id).html(":" + " " + angle + " °");
 
     return dataSetting.angleShowStatus1;
 }
