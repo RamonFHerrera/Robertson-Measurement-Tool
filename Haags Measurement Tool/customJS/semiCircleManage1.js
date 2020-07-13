@@ -1,15 +1,19 @@
 function setMoveSemiCircle1(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { // p0: first endPoint, p1: second endPoint, s: semiCircle point
     var angle = getAngle(p0, p1);
     movedSemiPoint1 = new THREE.Vector3(ss.x + dx, ss.y + dy, ss.z);
+    
     if (p1.x > p0.x) {
-        if (movedSemi.x < p0.x) {
+        if (movedSemiPoint1.x < p0.x) {
+            console.log("here1")
             movedSemiPoint1 = new THREE.Vector3(p0.x + 15, p0.y + 15, p0.z + 15)
         }
     } else {
-        if (movedSemi.x > p0.x) {
+        if (movedSemiPoint1.x < p0.x) {
+            console.log("here2")
             movedSemiPoint1 = new THREE.Vector3(p0.x - 15, p0.y - 15, p0.z - 15)
         }
     }
+    
     removeLable(labelGroup);
     removeSemiCircle(semiCircleGroup);
     setSemiCircle(p0, p1, movedSemiPoint1, semiCircleGroup, labelGroup, angle);
@@ -17,7 +21,6 @@ function setMoveSemiCircle1(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
 
 function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id) { //set the semiCircle draw
     var angle = getAngle(p0, p1);
-    if (p1.y > dataSetting.axisY - 0.6 && p1.y < dataSetting.axisY + 0.6 && p0.y > p1.y) {
         // add semicircle
         removeLable(labelGroup);
         removeSemiCircle(semiCircleGroup);
@@ -34,15 +37,8 @@ function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
             angleShowState1 = null;
             dataSetting.angleShowStatus1 = true;
         }
-    }
-    else {
-        angleShowState1 = null;
-        dataSetting.angleShowStatus1 = false;
-        removeLable(labelGroup);
-        removeSemiCircle(semiCircleGroup);
-    }
 
-    jQuery(id).html(":" + " " + angle + " °");
+    jQuery(id).html(":" + " " + angle + "°");
 
     return dataSetting.angleShowStatus1;
 }

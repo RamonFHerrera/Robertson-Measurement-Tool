@@ -48,6 +48,12 @@ function horizontalLine() {
         colorSetting.centerLineColor1);
     groundlineGroup.add(groundLineMesh);
     scene.add(groundlineGroup)
+
+    var groundLineMesh = getLineMesh(new THREE.Vector3(-300, dataSetting.axisY2, 1),
+        new THREE.Vector3(300, dataSetting.axisY2, 0.1),
+        colorSetting.centerLineColor1);
+    groundlineGroup.add(groundLineMesh);
+    scene.add(groundlineGroup)
 }
 
 function setBallPos(ballNum, pos, ballGroup, lineGroup) {

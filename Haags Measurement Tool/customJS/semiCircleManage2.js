@@ -17,7 +17,6 @@ function setMoveSemiCircle2(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
 
 function drawSemiCircle2(p0, p1, semiCircleGroup, labelGroup, id) { //set the semiCircle draw
     var angle = getAngle(p0, p1);
-    if (p1.y > dataSetting.axisY - 0.6 && p1.y < dataSetting.axisY + 0.6 && p0.y > p1.y) {
         // add semicircle
         removeLable(labelGroup);
         removeSemiCircle(semiCircleGroup);
@@ -34,13 +33,6 @@ function drawSemiCircle2(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
             angleShowState = null;
             dataSetting.angleShowStatus2 = true;
         }
-    }
-    else {
-        angleShowState = null;
-        dataSetting.angleShowStatus2 = false;
-        removeLable(labelGroup);
-        removeSemiCircle(semiCircleGroup);
-    }
-    jQuery(id).html(":" + " " + angle + " °");
+    jQuery(id).html(":" + " " + angle + "°");
 
 }
