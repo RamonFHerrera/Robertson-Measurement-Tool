@@ -17,6 +17,8 @@ function setMoveSemiCircle2(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
     }
 
     dataSetting.movedAngle2 = movedSemiPoint2;
+    dataSetting.angleFlag2 = true;
+
     setSemiCircle(p0, p1, movedSemiPoint2, semiCircleGroup, labelGroup, angle);
 }
 
@@ -34,13 +36,33 @@ function drawSemiCircle2(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
                     semiCirclePoint2 = new THREE.Vector3(p1.x + 30, p1.y + 30, p1.z)
                     : semiCirclePoint2 = new THREE.Vector3(p1.x - 30, p1.y + 30, p1.z);
             }else{
-                semiCirclePoint2 = dataSetting.movedAngle2;
+                var tmp =  dataSetting.movedAngle2;
+                if(dataSetting.beforeAngleX2 != null && !dataSetting.angleFlag2) {
+                    tmp.x = dataSetting.beforeAngleX2;
+                }   
+                if(dataSetting.lineMove2) {
+                    var ppp = dataSetting.beforePointX2;
+                    var minus = 0;
+                    if(ppp < p1.x) {
+                        minus = p1.x - ppp;
+                        tmp.x += minus;
+                    }else{
+                        minus = ppp - p1.x ;
+                        tmp.x -= minus;
+                    }
+                }
+                semiCirclePoint2 = tmp;
+                // ***
+                dataSetting.beforeAngleX2 = tmp.x;
             }
                 
             if(angle == 0.00) {
                 angle = ' ';
             }
             setSemiCircle(p1, p0, semiCirclePoint2, semiCircleGroup, labelGroup, angle);
+
+            // ***
+            dataSetting.beforePointX2 = p1.x;
 
             angleShowState = null;
             dataSetting.angleShowStatus2 = true;

@@ -24,13 +24,13 @@ var firstSemiCircle1 = true; var firstSemiCircle2 = true;
 
 var sceneStatus = 1;
 
-const styleSetting = {
+var styleSetting = {
     "top": 30,
     "imageWidth": 800,
     "imageHeight": 480
 }
 
-const dataSetting = {
+var dataSetting = {
     "mouseStatus": " ",
     "lineShowStatus1": false,
     "lineShowStatus2": false,
@@ -48,9 +48,17 @@ const dataSetting = {
     "movedAngle1": '',
     "movedAngle2": '',
     "ballMoved1": false,
-    "ballMoved2": false
+    "ballMoved2": false,
+    "lineMove1": false,
+    "lineMove2": false,
+    "beforePointX1": null,
+    "beforePointX2": null,
+    "beforeAngleX1": null,
+    "beforeAngleX2": null,
+    "angleFlag1": false,
+    "angleFlag2": false
 }
-const colorSetting = {
+var colorSetting = {
     "ballColor": 0xfafc00,
     "ballOverColor": 0xfafc00,
     "lineColor": 0xfefefe,
@@ -146,7 +154,7 @@ function onMouseDown() {
 
     if (interBall1) {
         // console.log("ball1")
-        // ***
+        // ***111
         dataSetting.ballMoved1 = true;
 
         dataSetting.mouseStatus = "ball1";
@@ -157,7 +165,7 @@ function onMouseDown() {
 
     if (interBall2) {
         // console.log("ball2")
-        // ***
+        // ***222
         dataSetting.ballMoved2 = true;
 
         dataSetting.mouseStatus = "ball2";
@@ -180,7 +188,7 @@ function onMouseDown() {
             // console.log("angleShowStatus1")
             if (interAngle1) {
                 // console.log("interAngle1")
-                // ***
+                // ***111
                 dataSetting.angleMove1 = true;
 
                 dataSetting.mouseStatus = "angle1";
@@ -213,7 +221,7 @@ function onMouseDown() {
             // console.log("angleShowStatus2")
             if (interAngle2) {
                 // console.log("interAngle2")
-                // ***
+                // ***222
                 dataSetting.angleMove2 = true;
 
                 dataSetting.mouseStatus = "angle2";
@@ -285,6 +293,7 @@ function onMouseUp() {
     // initial setting
     if (dataSetting.lineShowStatus1) {
         // console.log("lineShowStatus1 Up")
+
         lineGroup1.children[0].material.color.setHex(colorSetting.lineColor);
         sceneStatus = 2;
         if (dataSetting.angleShowStatus1) {
@@ -297,7 +306,7 @@ function onMouseUp() {
     }
 
     if (magneticIndex1 === -1) {
-        // console.log("magneticIndex1 == -1")
+        // console.log("magneticIndex1 == -1")  
         if(point0.y == dataSetting.axisY) {
             drawSemiCircle1(point1, point0, semiCircleGroup1, angleLabel1, '#angle1');
         }
@@ -416,9 +425,14 @@ function onMouseMove() {
 
     if (dataSetting.mouseStatus === "line1") {
         if (interPlane) {
-            // console.log("line1")
-            if (setBallNum1 === 1 || setBallNum1 === 0) {
+            // console.log("Line1")
 
+            // console.log("runtime:", dataSetting.beforePoint1)
+            // ***111
+            dataSetting.lineMove1 = true;
+            dataSetting.angleFlag1 = false;
+
+            if (setBallNum1 === 1 || setBallNum1 === 0) {  
 
                 removeSemiCircle(semiCircleGroup1);   
                 removeLable(angleLabel1);
@@ -489,6 +503,11 @@ function onMouseMove() {
 
     if (dataSetting.mouseStatus === "line2") {
         if (interPlane) {
+
+            // ***222
+            dataSetting.lineMove2 = true;
+            dataSetting.angleFlag2 = false;
+
             // console.log("line2")
             if (setBallNum2 === 1 || setBallNum2 === 0) {
                 removeSemiCircle(semiCircleGroup2);   
