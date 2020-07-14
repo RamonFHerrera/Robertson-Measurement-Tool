@@ -37,9 +37,11 @@ var dataSetting = {
     "angleShowStatus1": false,
     "angleShowStatus2": false,
     "downPosition": null,
-    "axisY": 0,
+    "axisY": -60,
     "axisY1": 60,
-    "axisY2": -60,
+
+    "axisY2": 0,
+    "axisY3": -120,
     "reduction": 1,
     "fontSize": 10,
     "svgURL": "../svgs/tiger.svg",
@@ -242,52 +244,52 @@ function onMouseUp() {
     setBallNum1 = -1; setBallNum2 = -1;
 
     // first line move
-    if(Math.abs(point0.y) <= dataSetting.axisY1) {
-        if(Math.abs(point1.y) <= dataSetting.axisY1) {
-            point1.y = 0
+    if(Math.abs(point0.y - dataSetting.axisY) <= dataSetting.axisY1) {
+        if(Math.abs(point1.y - dataSetting.axisY) <= dataSetting.axisY1) {
+            point1.y = dataSetting.axisY
         }else{
-            point1.y -= point0.y
-            if(Math.abs(point1.y) <= dataSetting.axisY1) {
-                point1.y = 0;
+            point1.y -= point0.y - dataSetting.axisY
+            if(Math.abs(point1.y - dataSetting.axisY) <= dataSetting.axisY1) {
+                point1.y = dataSetting.axisY;
             }
         }
-        point0.y = 0;
+        point0.y = dataSetting.axisY;
     }
 
-    if(Math.abs(point1.y) <= dataSetting.axisY1) {
-        if(Math.abs(point0.y) <= dataSetting.axisY1) {
-            point0.y = 0;
+    if(Math.abs(point1.y - dataSetting.axisY) <= dataSetting.axisY1) {
+        if(Math.abs(point0.y - dataSetting.axisY) <= dataSetting.axisY1) {
+            point0.y = dataSetting.axisY;
         }else{
-            point0.y -= point1.y;
-            if(Math.abs(point0.y) <= dataSetting.axisY1) {
-                point0.y = 0;
+            point0.y -= point1.y - dataSetting.axisY;
+            if(Math.abs(point0.y - dataSetting.axisY) <= dataSetting.axisY1) {
+                point0.y = dataSetting.axisY;
             }
         }
-        point1.y = 0;
+        point1.y = dataSetting.axisY;
     }
     
     // second line move
-    if(Math.abs(point2.y) <= dataSetting.axisY1) {
-        if(Math.abs(point3.y) <= dataSetting.axisY1) {
-            point3.y = 0
+    if(Math.abs(point2.y - dataSetting.axisY) <= dataSetting.axisY1) {
+        if(Math.abs(point3.y - dataSetting.axisY) <= dataSetting.axisY1) {
+            point3.y = dataSetting.axisY
         }else{
-            point3.y -= point2.y;
-            if(Math.abs(point3.y) <= dataSetting.axisY1) {
-                point3.y = 0;
+            point3.y -= point2.y - dataSetting.axisY;
+            if(Math.abs(point3.y - dataSetting.axisY) <= dataSetting.axisY1) {
+                point3.y = dataSetting.axisY;
             }
         }
-        point2.y = 0;
+        point2.y = dataSetting.axisY;
     }
-    if(Math.abs(point3.y) <= dataSetting.axisY1) {
-        if(Math.abs(point2.y) <= dataSetting.axisY1) {
-            point2.y = 0
+    if(Math.abs(point3.y - dataSetting.axisY) <= dataSetting.axisY1) {
+        if(Math.abs(point2.y - dataSetting.axisY) <= dataSetting.axisY1) {
+            point2.y = dataSetting.axisY
         }else{
-            point2.y -= point3.y;
-            if(Math.abs(point2.y) <= dataSetting.axisY1) {
-                point2.y = 0;
+            point2.y -= point3.y - dataSetting.axisY;
+            if(Math.abs(point2.y - dataSetting.axisY) <= dataSetting.axisY1) {
+                point2.y = dataSetting.axisY;
             }
         }
-        point3.y = 0;
+        point3.y = dataSetting.axisY;
     }
 
     // initial setting

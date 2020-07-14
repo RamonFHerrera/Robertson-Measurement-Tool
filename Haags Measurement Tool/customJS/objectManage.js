@@ -43,8 +43,8 @@ function horizontalLine() {
     groundlineGroup.add(groundLineMesh);
     scene.add(groundlineGroup)
 
-    var groundLineMesh = getLineMesh(new THREE.Vector3(-300, dataSetting.axisY1, 1),
-        new THREE.Vector3(300, dataSetting.axisY1, 0.1),
+    var groundLineMesh = getLineMesh(new THREE.Vector3(-300, dataSetting.axisY3, 1),
+        new THREE.Vector3(300, dataSetting.axisY3, 0.1),
         colorSetting.centerLineColor1);
     groundlineGroup.add(groundLineMesh);
     scene.add(groundlineGroup)
