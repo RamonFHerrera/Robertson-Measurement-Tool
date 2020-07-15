@@ -37,11 +37,11 @@ var dataSetting = {
     "angleShowStatus1": false,
     "angleShowStatus2": false,
     "downPosition": null,
-    "axisY": -60,
-    "axisY1": 60,
+    "axisY": -12,
+    "axisY1": 12,
 
     "axisY2": 0,
-    "axisY3": -120,
+    "axisY3": -24,
     "reduction": 1,
     "fontSize": 10,
     "svgURL": "../svgs/tiger.svg",
@@ -67,7 +67,7 @@ var colorSetting = {
     "lineOverColor": 0xFFFF00,
     "semiCircleColor": 0xFFFF00,
     "semiCircleOverColor": 0xfefefe,
-    "centerLineColor1": 0xde2316
+    "centerLineColor1": 0xfefefe
 }
 
 var offsetX = (window.innerWidth - styleSetting.imageWidth) * 0.5;

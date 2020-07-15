@@ -40,7 +40,7 @@ body {
 
 .setting {
    position: absolute;
-   bottom: -240px;
+   bottom: -260px;
    /* width: 900px; */
    /* left: calc(50% - 385px); */
    font-size: 22px;
@@ -75,7 +75,9 @@ body {
    color: black;
    /* margin-right: 90px; */
 }
-
+.sentence {
+   padding: 10px 0 10px 0;
+}
 .paragraph a {
    color: black;
 }
