@@ -40,7 +40,11 @@ body {
 
 .setting {
    position: absolute;
+<<<<<<< HEAD
    bottom: -260px;
+=======
+   bottom: -170px;
+>>>>>>> 529a7771fccb448d67efbfbcdbc1c279f22d38a3
    /* width: 900px; */
    /* left: calc(50% - 385px); */
    font-size: 22px;
