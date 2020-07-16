@@ -33,21 +33,18 @@ body {
     overflow: hidden;
 }
 .canvas{
+   /* text-align: center; */
    position: absolute;
-   /* top:40px;
-   left: calc(50% - 500px); */
 }
 
 .setting {
    position: absolute;
-
-   bottom: -260px;
-
-   /* left: calc(50% - 385px); */
+   bottom: 120px;
    font-size: 22px;
+   width: 100%;
 }
 .setting .set-part{
-   width: 35%;
+   width: 15%;
 }
 .setting .set-part .set-item{
    width: 100%;
