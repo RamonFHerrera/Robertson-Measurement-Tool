@@ -252,14 +252,12 @@ function addDistanceLabel(point0, point1, group, id) {
 }
 
 function removeSemiCircle(group) {
-
     for (let i = group.children.length - 1; i >= 0; i--) {
         group.remove(group.children[i]);
     }
 }
 
 function removeLable(group) {
-
     for (let i = group.children.length - 1; i >= 0; i--) {
         group.remove(group.children[i]);
     }

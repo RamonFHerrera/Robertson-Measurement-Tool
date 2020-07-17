@@ -108,6 +108,58 @@ function init() {
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mousemove', onMouseMove, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
+    canvas.addEventListener('dblclick', onMouseClick, false);
+}
+
+function onMouseClick() {
+    var interLine1 = getMouseObject(event, mouse, raycaster, camera, lineGroup1.children);
+    var interLine2 = getMouseObject(event, mouse, raycaster, camera, lineGroup2.children);
+    
+    if (dataSetting.lineShowStatus1) {
+        if (interLine1) {
+            dataSetting.angleShowStatus1 = false;
+            dataSetting.lineShowStatus1 = false;
+            sceneStatus = 1;
+            magneticIndex1 = -1;
+            distanceLabel1.position.set(0, 0, 0);
+
+            setTimeout(function(){ 
+                removeLable(distanceLabel1);
+                removeLable(angleLabel1);                    
+                $('#angle1').html(" ");
+                $("#distance1").html(" ");
+                removeBall(ballGroup1, lineGroup1);
+                removeSemiCircle(semiCircleGroup1);
+             }, 300);
+        }else{
+
+        }
+    }else{
+        
+    }
+
+    if (dataSetting.lineShowStatus2) {
+        if (interLine2) {
+            dataSetting.angleShowStatus2 = false;
+            dataSetting.lineShowStatus2 = false;
+            sceneStatus = 1;
+            magneticIndex2 = -1;
+            distanceLabel2.position.set(0, 0, 0);
+
+            setTimeout(function(){
+                $("#distance2").html(" ");
+                $('#angle2').html(" ");
+                removeLable(distanceLabel2);
+                removeLable(angleLabel2);
+                removeBall(ballGroup2, lineGroup2);
+                removeSemiCircle(semiCircleGroup2);
+            }, 300);
+        }else{
+
+        }
+    }else{
+
+    }
 }
 
 function onMouseDown() {
