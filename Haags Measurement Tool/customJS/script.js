@@ -130,7 +130,7 @@ function onMouseClick() {
                 $("#distance1").html(" ");
                 removeBall(ballGroup1, lineGroup1);
                 removeSemiCircle(semiCircleGroup1);
-             }, 300);
+             }, 200);
         }else{
 
         }
@@ -153,7 +153,7 @@ function onMouseClick() {
                 removeLable(angleLabel2);
                 removeBall(ballGroup2, lineGroup2);
                 removeSemiCircle(semiCircleGroup2);
-            }, 300);
+            }, 200);
         }else{
 
         }
