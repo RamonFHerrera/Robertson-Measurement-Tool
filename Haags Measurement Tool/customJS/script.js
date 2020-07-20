@@ -118,7 +118,6 @@ function deleteLine1() {
     dataSetting.lineShowStatus1 = false;
     sceneStatus = 1;
     magneticIndex1 = -1;
-    deleteLine = 0;
     distanceLabel1.position.set(0, 0, 0);
 
     setTimeout(function(){ 
@@ -134,9 +133,8 @@ function deleteLine1() {
 function deleteLine2() {
     dataSetting.angleShowStatus2 = false;
     dataSetting.lineShowStatus2 = false;
-    sceneStatus = 1;
+    sceneStatus = 2;
     magneticIndex2 = -1;
-    deleteLine = 0;
     distanceLabel2.position.set(0, 0, 0);
 
     setTimeout(function(){
