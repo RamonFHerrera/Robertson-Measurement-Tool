@@ -70,6 +70,8 @@ var colorSetting = {
     "centerLineColor1": 0xfefefe
 }
 
+var deleteLine = 0;
+
 var offsetX = (window.innerWidth - styleSetting.imageWidth) * 0.5;
 var offsetY = (window.innerHeight - styleSetting.imageHeight) * 0.2;
 
@@ -108,29 +110,54 @@ function init() {
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mousemove', onMouseMove, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
-    canvas.addEventListener('dblclick', onMouseClick, false);
+    canvas.addEventListener('click', onMouseClick, false);
+}
+
+function deleteLine1() {
+    dataSetting.angleShowStatus1 = false;
+    dataSetting.lineShowStatus1 = false;
+    sceneStatus = 1;
+    magneticIndex1 = -1;
+    deleteLine = 0;
+    distanceLabel1.position.set(0, 0, 0);
+
+    setTimeout(function(){ 
+        removeLable(distanceLabel1);
+        removeLable(angleLabel1);                    
+        $('#angle1').html(" ");
+        $("#distance1").html(" ");
+        removeBall(ballGroup1, lineGroup1);
+        removeSemiCircle(semiCircleGroup1);
+    }, 150);
+}
+
+function deleteLine2() {
+    dataSetting.angleShowStatus2 = false;
+    dataSetting.lineShowStatus2 = false;
+    sceneStatus = 1;
+    magneticIndex2 = -1;
+    deleteLine = 0;
+    distanceLabel2.position.set(0, 0, 0);
+
+    setTimeout(function(){
+        $("#distance2").html(" ");
+        $('#angle2').html(" ");
+        removeLable(distanceLabel2);
+        removeLable(angleLabel2);
+        removeBall(ballGroup2, lineGroup2);
+        removeSemiCircle(semiCircleGroup2);
+    }, 150);
 }
 
 function onMouseClick() {
+
     var interLine1 = getMouseObject(event, mouse, raycaster, camera, lineGroup1.children);
     var interLine2 = getMouseObject(event, mouse, raycaster, camera, lineGroup2.children);
     
     if (dataSetting.lineShowStatus1) {
         if (interLine1) {
-            dataSetting.angleShowStatus1 = false;
-            dataSetting.lineShowStatus1 = false;
-            sceneStatus = 1;
-            magneticIndex1 = -1;
-            distanceLabel1.position.set(0, 0, 0);
-
-            setTimeout(function(){ 
-                removeLable(distanceLabel1);
-                removeLable(angleLabel1);                    
-                $('#angle1').html(" ");
-                $("#distance1").html(" ");
-                removeBall(ballGroup1, lineGroup1);
-                removeSemiCircle(semiCircleGroup1);
-             }, 200);
+            lineGroup1.children[0].material.color.setHex(colorSetting.lineOverColor);
+            deleteLine = 1;
         }else{
 
         }
@@ -140,20 +167,8 @@ function onMouseClick() {
 
     if (dataSetting.lineShowStatus2) {
         if (interLine2) {
-            dataSetting.angleShowStatus2 = false;
-            dataSetting.lineShowStatus2 = false;
-            sceneStatus = 1;
-            magneticIndex2 = -1;
-            distanceLabel2.position.set(0, 0, 0);
-
-            setTimeout(function(){
-                $("#distance2").html(" ");
-                $('#angle2').html(" ");
-                removeLable(distanceLabel2);
-                removeLable(angleLabel2);
-                removeBall(ballGroup2, lineGroup2);
-                removeSemiCircle(semiCircleGroup2);
-            }, 200);
+            lineGroup2.children[0].material.color.setHex(colorSetting.lineOverColor);
+            deleteLine = 2;
         }else{
 
         }

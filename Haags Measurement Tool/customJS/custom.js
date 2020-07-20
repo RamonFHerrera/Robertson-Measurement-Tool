@@ -263,6 +263,12 @@ function removeLable(group) {
     }
 }
 
-
-
-
+$(document).ready(function(){
+    $('html').keyup(function(e){
+        if(e.keyCode == 46) {
+            deleteLine1();
+        }else{
+            deleteLine2();
+        }
+    });
+});
