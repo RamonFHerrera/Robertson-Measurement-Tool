@@ -266,13 +266,13 @@ function removeLable(group) {
 $(document).ready(function(){
     $('html').keyup(function(e){
         if(e.keyCode == 46) {
-            if(deleteLine == 1) {
+            if(deleteLine1Flag) {
                 deleteLine1();
-                deleteLine = 0;
+                deleteLine1Flag = false;
             }
-            if(deleteLine == 2) {
+            if(deleteLine2Flag) {
                 deleteLine2();
-                deleteLine = 0;
+                deleteLine2Flag = false;
             }
         }else{
             

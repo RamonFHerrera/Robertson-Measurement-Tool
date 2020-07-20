@@ -70,7 +70,10 @@ var colorSetting = {
     "centerLineColor1": 0xfefefe
 }
 
-var deleteLine = 0;
+var deleteLine1Flag = false;
+var deleteLine2Flag = false;
+var isLine1 = false;
+var isLine2 = false;
 
 var offsetX = (window.innerWidth - styleSetting.imageWidth) * 0.5;
 var offsetY = (window.innerHeight - styleSetting.imageHeight) * 0.2;
@@ -114,13 +117,14 @@ function init() {
 }
 
 function deleteLine1() {
-    setTimeout(function(){
-        dataSetting.angleShowStatus1 = false;
-        dataSetting.lineShowStatus1 = false;
-        sceneStatus = 1;
-        distanceLabel1.position.set(0, 0, 0);
-        point0 = new THREE.Vector3(); point1 = new THREE.Vector3();
+    dataSetting.angleShowStatus1 = false;
+    dataSetting.lineShowStatus1 = false;
+    sceneStatus = 1;
+    isLine1 = false;
+    distanceLabel1.position.set(0, 0, 0);
+    point0 = new THREE.Vector3(); point1 = new THREE.Vector3();
 
+    setTimeout(function(){
         removeLable(distanceLabel1);
         removeLable(angleLabel1);                    
         $('#angle1').html(" ");
@@ -131,13 +135,18 @@ function deleteLine1() {
 }
 
 function deleteLine2() {
-    setTimeout(function(){
-        dataSetting.angleShowStatus2 = false;
-        dataSetting.lineShowStatus2 = false;
+    dataSetting.angleShowStatus2 = false;
+    dataSetting.lineShowStatus2 = false;
+    if(isLine1){
         sceneStatus = 2;
-        distanceLabel2.position.set(0, 0, 0);
-        point2 = new THREE.Vector3(); point3 = new THREE.Vector3();
+    }else{
+        sceneStatus = 1;
+    }
+    isLine2 = false;
+    distanceLabel2.position.set(0, 0, 0);
+    point2 = new THREE.Vector3(); point3 = new THREE.Vector3();
 
+    setTimeout(function(){
         $("#distance2").html(" ");
         $('#angle2').html(" ");
         removeLable(distanceLabel2);
@@ -149,13 +158,16 @@ function deleteLine2() {
 
 function onMouseClick() {
 
+    // console.log("one click");
+
     var interLine1 = getMouseObject(event, mouse, raycaster, camera, lineGroup1.children);
     var interLine2 = getMouseObject(event, mouse, raycaster, camera, lineGroup2.children);
     
     if (dataSetting.lineShowStatus1) {
         if (interLine1) {
             lineGroup1.children[0].material.color.setHex(colorSetting.lineOverColor);
-            deleteLine = 1;
+            deleteLine1Flag = true;
+            deleteLine2Flag = false;
         }else{
 
         }
@@ -166,7 +178,8 @@ function onMouseClick() {
     if (dataSetting.lineShowStatus2) {
         if (interLine2) {
             lineGroup2.children[0].material.color.setHex(colorSetting.lineOverColor);
-            deleteLine = 2;
+            deleteLine2Flag = true;
+            deleteLine1Flag = false;
         }else{
 
         }
@@ -176,6 +189,9 @@ function onMouseClick() {
 }
 
 function onMouseDown() {
+
+    // console.log("click down")
+
     var interPlane = getMouseObject(event, mouse, raycaster, camera, [planeGroup.children[0]]);
     var interBall1 = getMouseObject(event, mouse, raycaster, camera, ballGroup1.children);
     var interBall2 = getMouseObject(event, mouse, raycaster, camera, ballGroup2.children);
@@ -304,6 +320,9 @@ function onMouseDown() {
 }
 
 function onMouseUp() {
+
+    // console.log("click up")
+
     dataSetting.downPosition = null;
     dataSetting.mouseStatus = "none";
     setBallNum1 = -1; setBallNum2 = -1;
@@ -359,8 +378,6 @@ function onMouseUp() {
 
     // initial setting
     if (dataSetting.lineShowStatus1) {
-        // console.log("lineShowStatus1 Up")
-
         lineGroup1.children[0].material.color.setHex(colorSetting.lineColor);
         sceneStatus = 2;
         if (dataSetting.angleShowStatus1) {
@@ -383,9 +400,14 @@ function onMouseUp() {
     }
 
     if (dataSetting.lineShowStatus2) {
-        // console.log("lineShowStatus2 UP")
         lineGroup2.children[0].material.color.setHex(colorSetting.lineColor);
-        sceneStatus = -1;
+
+        if(isLine1 && isLine2) {
+            sceneStatus = -1;
+        }else{
+
+        }
+        
         if (dataSetting.angleShowStatus2) {
             // console.log("angleShowStatus2 UP")
             // semiCircleGroup2.children[0].material.color.setHex(colorSetting.semiCircleColor);
@@ -405,6 +427,9 @@ function onMouseUp() {
 }
 
 function onMouseMove() {
+
+    // console.log("click move")
+
     var interPlane = getMouseObject(event, mouse, raycaster, camera, [planeGroup.children[0]]);
     var interBall1 = getMouseObject(event, mouse, raycaster, camera, ballGroup1.children);
     var interBall2 = getMouseObject(event, mouse, raycaster, camera, ballGroup2.children);
@@ -429,6 +454,7 @@ function onMouseMove() {
                     drawSemiCircle1(point0, point1, semiCircleGroup1, angleLabel1, '#angle1');
                 }
                 dataSetting.lineShowStatus1 = true;
+                isLine1 = true;
             }
         }
     }
@@ -455,6 +481,7 @@ function onMouseMove() {
                     drawSemiCircle2(point2, point3, semiCircleGroup2, angleLabel2, '#angle2');
                 }
                 dataSetting.lineShowStatus2 = true;
+                isLine2 = true;
             }
         }
     }
