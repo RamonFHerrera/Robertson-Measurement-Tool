@@ -114,37 +114,37 @@ function init() {
 }
 
 function deleteLine1() {
-    dataSetting.angleShowStatus1 = false;
-    dataSetting.lineShowStatus1 = false;
-    sceneStatus = 1;
-    magneticIndex1 = -1;
-    distanceLabel1.position.set(0, 0, 0);
+    setTimeout(function(){
+        dataSetting.angleShowStatus1 = false;
+        dataSetting.lineShowStatus1 = false;
+        sceneStatus = 1;
+        distanceLabel1.position.set(0, 0, 0);
+        point0 = new THREE.Vector3(); point1 = new THREE.Vector3();
 
-    setTimeout(function(){ 
         removeLable(distanceLabel1);
         removeLable(angleLabel1);                    
         $('#angle1').html(" ");
         $("#distance1").html(" ");
         removeBall(ballGroup1, lineGroup1);
         removeSemiCircle(semiCircleGroup1);
-    }, 150);
+    }, 200);
 }
 
 function deleteLine2() {
-    dataSetting.angleShowStatus2 = false;
-    dataSetting.lineShowStatus2 = false;
-    sceneStatus = 2;
-    magneticIndex2 = -1;
-    distanceLabel2.position.set(0, 0, 0);
-
     setTimeout(function(){
+        dataSetting.angleShowStatus2 = false;
+        dataSetting.lineShowStatus2 = false;
+        sceneStatus = 2;
+        distanceLabel2.position.set(0, 0, 0);
+        point2 = new THREE.Vector3(); point3 = new THREE.Vector3();
+
         $("#distance2").html(" ");
         $('#angle2').html(" ");
         removeLable(distanceLabel2);
         removeLable(angleLabel2);
         removeBall(ballGroup2, lineGroup2);
         removeSemiCircle(semiCircleGroup2);
-    }, 150);
+    }, 200);
 }
 
 function onMouseClick() {
@@ -462,9 +462,6 @@ function onMouseMove() {
     if (dataSetting.mouseStatus === "ball1") { //select ball
         if (interPlane) {
             // console.log("select ball 1")
-
-
-
             removeSemiCircle(semiCircleGroup1);   
             removeLable(angleLabel1);
         
