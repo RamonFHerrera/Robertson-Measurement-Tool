@@ -43,7 +43,7 @@ var dataSetting = {
     "axisY2": -48,
     "axisY3": -72,
     "reduction": 1,
-    "fontSize": 10,
+    "fontSize": 12,
     "svgURL": "../svgs/tiger.svg",
     "angleMove1": false,
     "angleMove2": false,
