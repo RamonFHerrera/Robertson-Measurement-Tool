@@ -198,6 +198,14 @@ function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center 
     var v1 = new THREE.Vector2(p0.x + x, p0.y + y);
     var v2; p0.x < p1.x ? v2 = new THREE.Vector2(p0.x + d, p0.y) : v2 = new THREE.Vector2(p0.x - d, p0.y);
     var c = new THREE.Vector2(p0.x, p0.y);
+    
+    if(v1.x >= p1.x){
+        v1 = new THREE.Vector2(p1.x, p1.y);
+        p0.x < p1.x ? v2 = new THREE.Vector2(p0.x + D, p0.y) : v2 = new THREE.Vector2(p0.x - D, p0.y);
+    }else{
+        
+    }
+
     var s = EllipseArc(c, v1, v2, 300, 0.06)
     semiGroup.add(s);
     scene.add(semiGroup);
@@ -211,7 +219,7 @@ function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center 
             setLabel(angle + "°", location, font, labelGroup);
         }
         
-    });
+    });    
 }
 
 function setLabel(name, location, font, group) {
