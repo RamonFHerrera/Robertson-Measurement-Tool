@@ -21,7 +21,7 @@ function setMoveSemiCircle1(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
     if(isScope == 0) {
         dataSetting.movedAngle1 = movedSemiPoint1;
     }else{
-        
+       
     }
     // dataSetting.movedAngle1 = movedSemiPoint1;
     dataSetting.angleFlag1 = true;
