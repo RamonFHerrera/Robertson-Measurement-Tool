@@ -165,6 +165,9 @@ function onMouseClick() {
             lineGroup1.children[0].material.color.setHex(colorSetting.lineOverColor);
             deleteLine1Flag = true;
             deleteLine2Flag = false;
+            setTimeout(function(){
+                deleteLine1Flag = false;
+            }, 1800000);
         }else{
 
         }
@@ -177,6 +180,9 @@ function onMouseClick() {
             lineGroup2.children[0].material.color.setHex(colorSetting.lineOverColor);
             deleteLine2Flag = true;
             deleteLine1Flag = false;
+            setTimeout(function(){
+                deleteLine2Flag = false;
+            }, 1800000);
         }else{
 
         }
