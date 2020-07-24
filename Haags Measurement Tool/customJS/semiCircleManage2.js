@@ -26,7 +26,7 @@ function setMoveSemiCircle2(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
     // dataSetting.movedAngle2 = movedSemiPoint2;
     dataSetting.angleFlag2 = true;
 
-    setSemiCircle(p0, p1, movedSemiPoint2, semiCircleGroup, labelGroup, angle);
+    setSemiCircle(p0, p1, movedSemiPoint2, semiCircleGroup, labelGroup, angle, 2);
 }
 
 function drawSemiCircle2(p0, p1, semiCircleGroup, labelGroup, id) { //set the semiCircle draw
@@ -66,7 +66,7 @@ function drawSemiCircle2(p0, p1, semiCircleGroup, labelGroup, id) { //set the se
             if(angle == 0.00) {
                 angle = ' ';
             }
-            setSemiCircle(p1, p0, semiCirclePoint2, semiCircleGroup, labelGroup, angle);
+            setSemiCircle(p1, p0, semiCirclePoint2, semiCircleGroup, labelGroup, angle, 2);
 
             // ***
             dataSetting.beforePointX2 = p1.x;

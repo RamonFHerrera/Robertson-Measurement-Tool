@@ -208,7 +208,7 @@ function isInScopeOfSemiCircle(p0, p1, p) {
     }
 }
 
-function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center p: semiCircle
+function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle, line) { // p0: center p: semiCircle
 
     var D = p1.distanceTo(p0);
     var d = p.distanceTo(p0);
@@ -227,7 +227,12 @@ function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center 
         }else{
             v2 = new THREE.Vector2(p0.x - D, p0.y);
         }
-        dataSetting.movedAngle1 = v1;
+        if(line == 1) {
+            dataSetting.movedAngle1 = v1;
+        }
+        if(line == 2) {
+            dataSetting.movedAngle2 = v1;
+        }
     }else{
         
     }
