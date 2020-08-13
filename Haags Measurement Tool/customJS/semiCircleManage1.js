@@ -17,10 +17,16 @@ function setMoveSemiCircle1(p0, p1, ss, dx, dy, semiCircleGroup, labelGroup) { /
         angle = ' ';
     }
     // ***
-    dataSetting.movedAngle1 = movedSemiPoint1;
+    var isScope = isInScopeOfSemiCircle(p0, p1, movedSemiPoint1);
+    if(isScope == 0) {
+        dataSetting.movedAngle1 = movedSemiPoint1;
+    }else{
+       
+    }
+    // dataSetting.movedAngle1 = movedSemiPoint1;
     dataSetting.angleFlag1 = true;
     
-    setSemiCircle(p0, p1, movedSemiPoint1, semiCircleGroup, labelGroup, angle);
+    setSemiCircle(p0, p1, movedSemiPoint1, semiCircleGroup, labelGroup, angle, 1);
 }
 
 function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id, flag = 'no') { //set the semiCircle draw
@@ -62,7 +68,7 @@ function drawSemiCircle1(p0, p1, semiCircleGroup, labelGroup, id, flag = 'no') {
             angle = ' ';
         }
 
-        setSemiCircle(p1, p0, semiCirclePoint1, semiCircleGroup, labelGroup, angle);
+        setSemiCircle(p1, p0, semiCirclePoint1, semiCircleGroup, labelGroup, angle, 1);
 
         // ***
         dataSetting.beforePointX1 = p1.x;

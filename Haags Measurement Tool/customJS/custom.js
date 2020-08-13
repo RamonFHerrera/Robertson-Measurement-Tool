@@ -188,7 +188,27 @@ function EllipseArc(center, vertex1, vertex2, maxBoxSize, depth) {
     return ellipse;
 }
 
-function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center p: semiCircle
+function isInScopeOfSemiCircle(p0, p1, p) {
+    var D = p1.distanceTo(p0);
+    var d = p.distanceTo(p0);
+    var x = (d / D) * (p1.x - p0.x);
+    var y = (d / D) * (p1.y - p0.y);
+
+    var v1 = new THREE.Vector2(p0.x + x, p0.y + y);
+    
+    var D1 = v1.distanceTo(p0);
+    if(D1 > D){
+        if(p0.x < p1.x) {
+            return 1;
+        }else{
+            return -1;
+        }
+    }else{
+        return 0;
+    }
+}
+
+function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle, line) { // p0: center p: semiCircle
 
     var D = p1.distanceTo(p0);
     var d = p.distanceTo(p0);
@@ -199,9 +219,20 @@ function setSemiCircle(p0, p1, p, semiGroup, labelGroup, angle) { // p0: center 
     var v2; p0.x < p1.x ? v2 = new THREE.Vector2(p0.x + d, p0.y) : v2 = new THREE.Vector2(p0.x - d, p0.y);
     var c = new THREE.Vector2(p0.x, p0.y);
     
-    if(v1.x >= p1.x){
+    var D1 = v1.distanceTo(p0);
+    if(D1 > D){
         v1 = new THREE.Vector2(p1.x, p1.y);
-        p0.x < p1.x ? v2 = new THREE.Vector2(p0.x + D, p0.y) : v2 = new THREE.Vector2(p0.x - D, p0.y);
+        if(p0.x < p1.x) {
+            v2 = new THREE.Vector2(p0.x + D, p0.y);
+        }else{
+            v2 = new THREE.Vector2(p0.x - D, p0.y);
+        }
+        if(line == 1) {
+            dataSetting.movedAngle1 = v1;
+        }
+        if(line == 2) {
+            dataSetting.movedAngle2 = v1;
+        }
     }else{
         
     }
